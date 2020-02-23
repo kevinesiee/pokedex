@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+
+    {% extends "home.html" %} 
+	{% block head %}
+    {{ super() }}
+	{% endblock %}
+
+	<body>
+
+		{% block content %}
+		<br/>
+		<div id="content" class="container">
+			<div align="center">
+				<img src="{{url_for('static', filename='image/prof_chen.gif')}}">
+				<p>
+					Il existe {{nombre}} Pokémons connus aujourd'hui, tous aussi différents les uns des autres ! On en retrouve certains dans différentes formes comme par exemple : Dracaufeu. Ces différentes formes s'expliquent par le fait que les Pokémons  évoluent dans le temps. Mais ici on ne va pas s'intéresser aux fromes dites spéciales des pokémons mais leurs formes d'orgine. De plus il faut savoir que des Pokémons apparaissent au fil des années, on distingue aujourd'hui 8 génération ! C'est formidable n'est ce pas ?
+					<br/>
+					Vu le nombre de pokémons je vous propose de les observer selon les générations. 
+				</p>
+			</div>
+
+			<!-- barre de recherche -->
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  			<div class="collapse navbar-collapse" id="navbarNav">
+    			<ul class="navbar-nav">
+    				<li class="nav-item active">
+        				<a class="nav-link btn btn-danger" href="http://127.0.0.1:2745/pokedex/1/">Première génération</a>
+      				</li>
+      				<li class="nav-item active">
+        				<a class="nav-link btn btn-danger" href="http://127.0.0.1:2745/pokedex/2/">Deuxième génération</a>
+      				</li>
+      				<li class="nav-item active">
+        				<a class="nav-link btn btn-danger" href="http://127.0.0.1:2745/pokedex/3/">Troisième génération</a>
+      				</li>
+      				<li class="nav-item active">
+        				<a class="nav-link btn btn-danger" href="http://127.0.0.1:2745/pokedex/4/">Quatrième génération</a>
+      				</li>
+      				<li class="nav-item active">
+        				<a class="nav-link btn btn-danger" href="http://127.0.0.1:2745/pokedex/5/">Cinquième génération</a>
+      				</li>
+      				<li class="nav-item active">
+        				<a class="nav-link btn btn-danger" href="http://127.0.0.1:2745/pokedex/6/">Sixième génération</a>
+      				</li>
+      				<li class="nav-item active">
+        				<a class="nav-link btn btn-danger" href="http://127.0.0.1:2745/pokedex/7/">Septième génération</a>
+      				</li>
+      				<li class="nav-item active">
+        				<a class="nav-link btn btn-danger" href="http://127.0.0.1:2745/pokedex/8/">Huitième génération</a>
+      				</li>
+    			</ul>
+  			</div>
+			</nav>
+			<br/>
+    		<!-- gallerie de pokemon -->
+			<div class="gallerie" align="center">
+				{% for i in range(1,891) %}
+				<figure class="figure pokemon">
+					<img src="{{url_for('static', filename='image/'+'{:003d}'.format(i)+'.png')}}" class="figure-img img-fluid rounded img-thumbnail">
+					<figcaption class="figure-caption" align="center"><a>{{ liste[i-1]["numero"] }}-{{ liste[i-1]["nom"] }}</a></figcaption>					
+				</figure>					
+				{% endfor %}
+			</div>
+		</div>
+		{% endblock %}
+
+	</body>
+
+<html>

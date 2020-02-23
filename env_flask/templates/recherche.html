@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>"
+
+    {% extends "home.html" %} 
+	{% block head %}
+    {{ super() }} 
+	{% endblock %}
+
+	<body>
+		{% block content %}
+		<br/>
+		<div id="content" class="container">
+			<div align="center">
+				<img src="{{url_for('static', filename='image/prof_chen.gif')}}" class="prof_chen">
+				<p>Ravi de vous rencontrez {{prenom}}.</p>
+			</div>
+			<div align="center">
+				<p>Commençons par faire la recherche de tous les pokemons connus aujourd'hui grâce aux pokédex, un outil magnifique qui est un dictionnaire pour pokémon.</p>
+				<img src="{{url_for('static', filename='image/pokedex.png')}}" height="250" width="250">
+				<br/>
+				<br/>
+				<button type="button" class="btn btn-danger" onclick="window.location.href = 'http://127.0.0.1:2745/pokedex/';">Chercher</button>
+				<br/>
+				<br/>
+			</div>
+			
+		</div>
+		{% endblock %}
+
+	</body>
+
+<html>

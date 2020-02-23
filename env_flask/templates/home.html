@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+
+	{% block head %}
+    <head>
+        <meta charset="utf-8" />
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css"/>
+        <title>Pokemon</title>
+    </head>
+    {% endblock %}
+
+	<body>
+		{% block titre %}
+		<div class="container-fluid">
+				<h1 class="titre" align="center" style="color: red">Pokémon</h1>
+		</div>
+		{% endblock %}
+
+		
+
+		{% block content %}
+		<br/>
+		<div id="content" class="container">
+		  	<div align="center"><img src="{{url_for('static', filename='image/prof_chen.gif')}}" class="prof_chen"></div>
+			<p class="bienvenu">
+			Bienvenu dans le monde magique des Pokemon. Ce monde regorge de Pokémon tous autant fantastiques à découvrir et à étudier. Je suis le professeur Chen et je suis spécialisé dans ce domaine. 
+			Si vous êtes ici pour les découvrir alors vous êtes au bon endroit. 
+			</p>
+			<br/>
+			<p align="center">Avant de commencer pouvez vous me donner votre prénom.</p>
+			<form action="http://127.0.0.1:2745/recherche/" method="post" align="center">
+				<label>Prénom</label> : <input type="text" name="prenom">
+				<input type="submit" value="Envoyer" class="btn btn-danger">
+			<form/>	
+		</div>
+		{% endblock %}
+
+
+
+
+	</body>
+<html>

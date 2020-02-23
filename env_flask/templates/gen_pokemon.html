@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+
+    {% extends "home.html" %} 
+	{% block head %}
+    {{ super() }} 
+	{% endblock %}
+
+	<body>
+
+		{% block content %}
+			<div class="container">
+				<div align="center">
+					<img src="{{url_for('static', filename='image/prof_chen.gif')}}">
+					<p>
+						Voici les pokémons de la génération {{ gen }}.
+						{% if gen|int==1 %}
+							Ils sont apparus dans les années 1998 et sont les premiers pokémons. Parmi on retrouve le plus célèbre d'entre eux : Pikachu. Ces pokémons se trouvent dans la région de Kanto.
+						{% endif %}
+						{% if gen|int==2 %}
+							Les pokémons de la deuxième génération sont arrivés en même temps que les années 2000. On les retrouve en général dans la région de Johto mais il est possible de les apercevoir dans la région de Kanto.
+						{% endif %}
+						{% if gen|int==3 %}
+							Les pokémons de la troisième génération sont surnommés la génération "advance" et sont apparus entre 2002-2004. Ils se situent dans la région de Hoenn.
+						{% endif %}
+						{% if gen|int==4 %}
+							Les pokémons de la quatrième génération sont apparus en 2006 et se situent dans la région de Sinnoh.
+						{% endif %}
+						{% if gen|int==5 %}
+							Ils sont apparus en 2010 et se trouvent dans la ville d'Unys (une ville ressemblant étrangement à New-York).
+						{% endif %}
+						{% if gen|int==6 %}
+							Ils sont apparus en 2013 et se situent à Kalos (un pays représentant la France).
+						{% endif %}
+						{% if gen|int==7 %}
+							Ils sont apparus en 2016 et se situent à Alola une île paradisiaque ressemblant à Hawaï.
+						{% endif %}
+						{% if gen|int==8 %}
+							Ils sont apparus très récemment et ces pokémons se situent dans une régio surnommée Galar.
+						{% endif %}
+					</p>
+					<p>Vous pouvez retrouvez en bas un tableau résumant les statistiques basiques de chaque pokémon mais aussi un top 3 des pokémons de cette génération. Pour y aller rapidement appuyer sur les bouttons correspondants. Ou retouner voir tous les pokémons en appuyant sur le boutton Retour</p>
+					<a class="btn btn-success" href = "#graph">Comparaisons</a>
+					<a class="btn btn-success" href = "#tableau">Tableau</a>
+					<br/>
+					<br/>
+					<button type="button" class="btn btn-danger" onclick="window.location.href = 'http://127.0.0.1:2745/pokedex/';">Retour</button>
+				</div>
+				<br/>
+
+				<!-- gallerie de pokemon -->
+				<div class="gallerie" align="center">
+					{% for pok in liste %}
+					{% set num = pok["numero"]|int %}
+					<figure class="figure pokemon">
+						<img src="{{url_for('static', filename='image/'+'{:003d}'.format(num)+'.png')}}" class="figure-img img-fluid rounded img-thumbnail">
+						<figcaption class="figure-caption" align="center">{{ pok["numero"] }}-{{ pok["nom"] }}</figcaption>					
+					</figure>					
+					{% endfor %}
+				</div>
+				<br/>
+				<div id="graph" align="center">
+					{% set gennum = gen|string %}
+					<img src="{{url_for('static', filename='image/topgeneration_'+gennum+'.png')}}" class="figure-img img-fluid rounded img-thumbnail">
+				</div>
+				<div id="tableau" align="center">
+					<h4>Tableau des capacités des pokémons de la génération {{gen}}</h3>
+					<table>{{ table }}</table>
+				</div>
+			</div>
+		{% endblock %}
+
+	</body>
+
+<html>
